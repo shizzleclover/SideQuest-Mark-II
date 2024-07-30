@@ -1,11 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:sidequest_mark_ii/Main%20Screens/main.dart';
 import 'package:sidequest_mark_ii/constants.dart';
  
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  bool _isLoading = false;
+
+  void _login() {
+    setState(() {
+      _isLoading = true;
+    });
+
+  Future.delayed(Duration(seconds:2),
+    () {
+      print("Login Successful");
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => MainPage()),
+      );
+      setState( () {
+        _isLoading = false;
+        });
+    });
+    }
+   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +42,7 @@ class LoginPage extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 200.h, left: 50.w, right: 50.w),
+              padding: EdgeInsets.only(top: 170.h, left: 50.w, right: 50.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -35,6 +63,7 @@ class LoginPage extends StatelessWidget {
                   Container(
                     width: 340.w, // Use ScreenUtil width
                     child: TextFormField(
+                      controller: _emailController,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
@@ -46,7 +75,7 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20.h),
+                  SizedBox(height: 14.h),
                   Padding(
                     padding: EdgeInsets.only(right: 200.w),
                     child: Text('Password', style: TextStyle(color: Colors.white)),
@@ -54,6 +83,7 @@ class LoginPage extends StatelessWidget {
                   Container(
                     width: 340.w, // Use ScreenUtil width
                     child: TextFormField(
+                      controller: _passwordController,
                       decoration: InputDecoration(
                         hintText: '*****',
                         filled: true,
@@ -69,33 +99,66 @@ class LoginPage extends StatelessWidget {
                   ),
                   SizedBox(height: 30.h),
                   GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => MainPage()),
-                      );
-                    },
-                    child: Container(
-                      height: 54.h,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: gen,
-                        borderRadius: BorderRadius.circular(5.0.r),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Login',
-                          style: TextStyle(fontSize: 16.sp),
+                    onTap:  _login,
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 50.h,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: gen,
+                            borderRadius: BorderRadius.circular(5.0.r),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Login',
+                              style: TextStyle(fontSize: 16.sp),
+                            ),
+                          ),
                         ),
-                      ),
+                       SizedBox(height: 10),
+Container(
+  height: 50.h,
+  width: double.infinity,
+  decoration: BoxDecoration(
+    color: gen,
+    borderRadius: BorderRadius.circular(5.0.r),
+  ),
+  child: Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      // Icon on the left
+      Padding(
+        padding: EdgeInsets.only(left: 20.0), // Adjust padding as needed
+        child:  SvgPicture.asset('Assets/Icons/google.svg', )
+      ),
+      // Text in the center
+      Expanded(
+        child: Center(
+          child: Text(
+            'Login with Google',
+            style: TextStyle(
+              fontSize: 16.sp,
+              color: Colors.black, // Adjust the text color as needed
+            ),
+          ),
+        ),
+      ),
+    ],
+  ),
+),
+
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
+            
           ],
         ),
       ),
+      
     );
   }
 }
