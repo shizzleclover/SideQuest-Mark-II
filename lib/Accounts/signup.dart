@@ -115,6 +115,19 @@ class _SignupPageState extends State<SignupPage> {
                             child: Text('Create an account', style: TextStyle(fontSize: 16.sp)),
                           ),
                         ),
+                      ),
+                      SizedBox(height: 20.h,),
+                      GestureDetector(
+                        onTap: () {
+
+                        },
+                        child: 
+                        Row(
+                          children: [
+                            Text('Already have an account?', style: TextStyle(color:  Colors.white),),
+                             Text('Login'),
+                          ],
+                        ),
                       )
                     ],
                   ),

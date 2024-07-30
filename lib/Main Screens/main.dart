@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
- 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sidequest_mark_ii/constants.dart';
 import 'package:sidequest_mark_ii/widgets/bottomnavbar.dart';
- 
+
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
@@ -13,70 +12,77 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  int _selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-
-    int _selectedIndex = 0;
-
     // Initialize ScreenUtil
     ScreenUtil.init(context);
 
+    // Function to handle icon tap and navigation
     void _onIconTap(int index) {
-      // Handle icon tap and navigation
+      setState(() {
+        _selectedIndex = index;
+      });
+      // Handle icon tap and navigation here
       // Example:
       // if (index == 0) {
       //   Navigator.push(context, MaterialPageRoute(builder: (context) => FirstScreen()));
       // }
-       _selectedIndex = index;
     }
- 
 
     return Scaffold(
       backgroundColor: back,
+
+      // Side drawer configuration
       drawer: Drawer(
         backgroundColor: Colors.white,
         child: ListView(
           padding: EdgeInsets.zero,
-          children: <Widget>[
+          children: [
             DrawerHeader(
-              child: Text('Sidebar', style: TextStyle(color: Colors.white, fontSize: 24.sp)),
+              child: Text(
+                'Sidebar',
+                style: TextStyle(color: Colors.white, fontSize: 24.sp),
+              ),
             ),
             ListTile(
               title: Text('Item 1', style: TextStyle(color: Colors.white)),
               onTap: () {
-                // Handle item 1 tap
-                Navigator.pop(context);
+                Navigator.pop(context); // Close the drawer
               },
             ),
             ListTile(
               title: Text('Item 2', style: TextStyle(color: Colors.white)),
               onTap: () {
-                // Handle item 2 tap
-                Navigator.pop(context);
+                Navigator.pop(context); // Close the drawer
               },
             ),
             // Add more ListTiles as needed
           ],
         ),
       ),
+
+      // Main body of the page
       body: Stack(
         children: [
           SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w), // Use ScreenUtil
+              padding: EdgeInsets.symmetric(horizontal: 12.w), // Use ScreenUtil
               child: Column(
                 children: [
-                  SizedBox(height: 80.h), // Use ScreenUtil
+                  SizedBox(height: 60.h), // Use ScreenUtil
+
+                  // Header row with drawer icon, title, and SVG icon
                   Row(
                     children: [
                       GestureDetector(
                         onTap: () {
-                          // Open the drawer
-                          Scaffold.of(context).openDrawer();
+                          Scaffold.of(context).openDrawer(); // Open the drawer
                         },
                         child: Container(
-                          height: 50.h, // Use ScreenUtil
-                          width: 50.h, // Use ScreenUtil
+                          height: 40.h, // Use ScreenUtil
+                          width: 40.h, // Use ScreenUtil
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(100.r), // Use ScreenUtil
@@ -90,236 +96,135 @@ class _MainPageState extends State<MainPage> {
                       ),
                       const Spacer(),
                       SvgPicture.asset(
-                        'assets/icons/ ', // Ensure correct path
+                        'assets/icons/', // Ensure correct path
                         height: 50.h, // Use ScreenUtil
                       ),
                     ],
                   ),
-                  SizedBox(height: 16.h), // Use ScreenUtil
+                  SizedBox(height: 12.h), // Use ScreenUtil
+
+                  // Scrollable row for categories
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
-                    child: Column(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 80.w, // Use ScreenUtil
-                                height: 35.h, // Use ScreenUtil
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey),
-                                  borderRadius: BorderRadius.circular(50.r), // Use ScreenUtil
-                                ),
-                              ),
-                              SizedBox(width: 10.w),
-                              Container(
-                                width: 80.w, // Use ScreenUtil
-                                height: 35.h, // Use ScreenUtil
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey),
-                                  borderRadius: BorderRadius.circular(50.r), // Use ScreenUtil
-                                ),
-                              ),
-                              SizedBox(width: 10.w),
-                              Container(
-                                width: 120.w, // Use ScreenUtil
-                                height: 35.h, // Use ScreenUtil
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey),
-                                  borderRadius: BorderRadius.circular(50.r), // Use ScreenUtil
-                                ),
-                              ),
-                              SizedBox(width: 10.w),
-                              Container(
-                                width: 160.w, // Use ScreenUtil
-                                height: 35.h, // Use ScreenUtil
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey),
-                                  borderRadius: BorderRadius.circular(50.r), // Use ScreenUtil
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 16.h), // Use ScreenUtil
-                      
+                        _buildCategoryContainer(80.w, 35.h),
+                        _buildCategoryContainer(80.w, 35.h),
+                        _buildCategoryContainer(120.w, 35.h),
+                        _buildCategoryContainer(160.w, 35.h),
                       ],
                     ),
                   ),
-                  Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text('courses', style: TextStyle(color: Colors.white),),
-                          SizedBox(width: 10.w), // Use ScreenUtil
-                          Container(
-                            width: 40.w, // Use ScreenUtil
-                            height: 2.h, // Use ScreenUtil
-                            color: Colors.white,
-                          ),
-                        ],
-                      )
-                    ],
+                  SizedBox(height: 16.h), // Use ScreenUtil
+
+                  // Section for 'courses' title and separator
+                  _buildSectionTitle('courses'),
+
+                  // Scrollable row for course containers
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        _buildCourseContainer(220.w, 160.h, cont2),
+                        SizedBox(width: 5.w), // Use ScreenUtil
+                        _buildCourseContainer(220.w, 160.h, gen4),
+                        SizedBox(width: 5.w), // Use ScreenUtil
+                        _buildCourseContainer(220.w, 160.h, cont2),
+                        SizedBox(width: 5.w), // Use ScreenUtil
+                      ],
+                    ),
                   ),
-                  Column(
-                    children: [
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: 224.w, // Use ScreenUtil
-                              height: 158.h, // Use ScreenUtil
-                              decoration: BoxDecoration(
-                                color: cont2,
-                              ),
-                            ),
-                            SizedBox(width: 3.w), // Use ScreenUtil
-                            Container(
-                              width: 224.w, // Use ScreenUtil
-                              height: 158.h, // Use ScreenUtil
-                              decoration: BoxDecoration(
-                                color: gen4,
-                              ),
-                            ),
-                            SizedBox(width: 3.w), // Use ScreenUtil
-                            Container(
-                              width: 224.w, // Use ScreenUtil
-                              height: 158.h, // Use ScreenUtil
-                              decoration: BoxDecoration(
-                                color: cont2,
-                              ),
-                            ),
-                            SizedBox(width: 3.w) // Use ScreenUtil
-                          ],
-                        ),
-                      ),
-                    ],
+                  SizedBox(height: 6.h), // Use ScreenUtil
+
+                  // Another section for 'courses' title and separator
+                  _buildSectionTitle('Lectures'),
+
+                  // Scrollable row for more course containers
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        _buildCourseContainer(220.w, 160.h, cont2),
+                        SizedBox(width: 3.w), // Use ScreenUtil
+                        _buildCourseContainer(220.w, 160.h, gen),
+                        SizedBox(width: 3.w), // Use ScreenUtil
+                        _buildCourseContainer(220.w, 160.h, gen4),
+                        SizedBox(width: 3.w), // Use ScreenUtil
+                      ],
+                    ),
                   ),
                   SizedBox(height: 10.h), // Use ScreenUtil
-                  Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text('courses', style: TextStyle(color: Colors.white),),
-                          SizedBox(width: 10.w), // Use ScreenUtil
-                          Container(
-                            width: 40.w, // Use ScreenUtil
-                            height: 2.h, // Use ScreenUtil
-                            color: Colors.white,
-                          ),
-                        ],
-                      )
-                    ],
+                  // Final section for 'courses' title and separator
+                  _buildSectionTitle('Activites'),
+                  // Scrollable row for final set of course containers
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        _buildCourseContainer(220.w, 160.h, cont2),
+                        SizedBox(width: 3.w), // Use ScreenUtil
+                        _buildCourseContainer(220.w, 160.h, gen),
+                        SizedBox(width: 3.w), // Use ScreenUtil
+                        _buildCourseContainer(220.w, 160.h, gen4),
+                        SizedBox(width: 3.w), // Use ScreenUtil
+                      ],
+                    ),
                   ),
-                  Column(
-                    children: [
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: 224.w, // Use ScreenUtil
-                              height: 158.h, // Use ScreenUtil
-                              decoration: BoxDecoration(
-                                color: cont2
-                              ),
-                            ),
-                            SizedBox(width: 3.w), // Use ScreenUtil
-                            Container(
-                              width: 224.w, // Use ScreenUtil
-                              height: 158.h, // Use ScreenUtil
-                              decoration: BoxDecoration(
-                                color: gen
-                              ),
-                            ),
-                            SizedBox(width: 3.w), // Use ScreenUtil
-                            Container(
-                              width: 224.w, // Use ScreenUtil
-                              height: 158.h, // Use ScreenUtil
-                              decoration: BoxDecoration(
-                                color: gen4
-                              ),
-                            ),
-                            SizedBox(width: 3.w) // Use ScreenUtil
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10.h), // Use ScreenUtil
-                  Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text('courses', style: TextStyle(color: Colors.white),),
-                          SizedBox(width: 10.w), // Use ScreenUtil
-                          Container(
-                            width: 40.w, // Use ScreenUtil
-                            height: 2.h, // Use ScreenUtil
-                            color: Colors.white,
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                       
-
-
-                           child: Row(
-                             mainAxisAlignment: MainAxisAlignment.start,
-                             children: [
-                               Container(
-                                 width: 224.w, // Use ScreenUtil
-                                 height: 158.h, // Use ScreenUtil
-                                 decoration: BoxDecoration(
-                                   color: cont2
-                                 ),
-                               ),
-                               SizedBox(width: 3.w), // Use ScreenUtil
-                               Container(
-                                 width: 224.w, // Use ScreenUtil
-                                 height: 158.h, // Use ScreenUtil
-                                 decoration: BoxDecoration(
-                                   color: gen
-                                 ),
-                               ),
-                               SizedBox(width: 3.w), // Use ScreenUtil
-                               Container(
-                                 width: 224.w, // Use ScreenUtil
-                                 height: 158.h, // Use ScreenUtil
-                                 decoration: BoxDecoration(
-                                   color: gen4
-                                 ),
-                               ),
-                               SizedBox(width: 3.w) // Use ScreenUtil
-                             ],
-                           ),
-                         ),
-                       ],
-                     ),
-                   ],
-                 ),
-               ),
-             ),
-             CustomBottomAppBar(
-               backgroundColor: bot,
-               onIconTap: _onIconTap,
-                selectedIndex: _selectedIndex,
-             ),
-           ],
-         ),
-       );
-     }
-   }
+                ],
+              ),
+            ),
+          ),
+          SizedBox(height: 30.h,),
+          // Custom bottom navigation bar
+          CustomBottomAppBar(
+            backgroundColor: bot,
+            onIconTap: _onIconTap,
+            selectedIndex: _selectedIndex,
+          ),
+        ],
+      ),
+    );
+  }
+  // Helper method to create category containers
+  Widget _buildCategoryContainer(double width, double height) {
+    return Container(
+      width: width, // Use ScreenUtil
+      height: height, // Use ScreenUtil
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey),
+        borderRadius: BorderRadius.circular(50.r), // Use ScreenUtil
+      ),
+    );
+  }
+  // Helper method to create course containers
+  Widget _buildCourseContainer(double width, double height, Color color) {
+    return Container(
+      width: width, // Use ScreenUtil
+      height: height, // Use ScreenUtil
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.r), // Use ScreenUtil
+        color: color,
+      ),
+    );
+  }
+  // Helper method to create section titles and separators
+  Widget _buildSectionTitle(String title) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: TextStyle(color: Colors.grey, fontSize: 20.sp), // Use ScreenUtil
+            )
+          ],
+        ),
+      ],
+    );
+  }
+}

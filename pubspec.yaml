@@ -27,6 +27,9 @@ flutter:
     - Assets/Images/tr.png
     - Assets/Images/pr.png
 
+    - Assets/Icons/bell.svg
+
+
   fonts:
     - family: play
       fonts:

@@ -33,7 +33,7 @@ class Searchpage extends StatelessWidget {
                   SizedBox(height: 50.h),
                   const CustomTextField(
                     
-                    hintText: 'Search',
+                    hintText: 'Search', 
                     iconPath: 'Assets/icons/search.svg',  // Provide the correct path to your SVG
                   ),
                   SizedBox(height: 20.h,),
