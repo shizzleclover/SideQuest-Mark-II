@@ -34,6 +34,10 @@ flutter:
     - Assets/Icons/arrow.svg
     - Assets/Icons/gear.svg
     - Assets/Icons/bell2.svg
+    - Assets/Icons/doc.svg
+    - Assets/Icons/down.svg
+    - Assets/Icons/share.svg
+    - Assets/Icons/dl.svg
 
 
   fonts:

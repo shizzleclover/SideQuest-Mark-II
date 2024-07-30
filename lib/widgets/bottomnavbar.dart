@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sidequest_mark_ii/Main%20Screens/main.dart';
 import 'package:sidequest_mark_ii/Main%20Screens/searchpage.dart';
-import 'package:sidequest_mark_ii/ProfilePage/profile_page.dart';
+import 'package:sidequest_mark_ii/ProfilePage/main_profile_page.dart';
  
 
 class CustomBottomAppBar extends StatelessWidget {
