@@ -29,10 +29,7 @@ class _MainPageState extends State<MainPage> {
       // }
        _selectedIndex = index;
     }
-
-    
-
-
+ 
 
     return Scaffold(
       backgroundColor: back,
@@ -91,7 +88,7 @@ class _MainPageState extends State<MainPage> {
                         'Hello, Clover',
                         style: TextStyle(color: Colors.white, fontSize: 24.sp), // Use ScreenUtil
                       ),
-                      Spacer(),
+                      const Spacer(),
                       SvgPicture.asset(
                         'assets/icons/ ', // Ensure correct path
                         height: 50.h, // Use ScreenUtil
@@ -110,7 +107,7 @@ class _MainPageState extends State<MainPage> {
                             children: [
                               Container(
                                 width: 80.w, // Use ScreenUtil
-                                height: 50.h, // Use ScreenUtil
+                                height: 35.h, // Use ScreenUtil
                                 decoration: BoxDecoration(
                                   border: Border.all(color: Colors.grey),
                                   borderRadius: BorderRadius.circular(50.r), // Use ScreenUtil
@@ -119,7 +116,7 @@ class _MainPageState extends State<MainPage> {
                               SizedBox(width: 10.w),
                               Container(
                                 width: 80.w, // Use ScreenUtil
-                                height: 50.h, // Use ScreenUtil
+                                height: 35.h, // Use ScreenUtil
                                 decoration: BoxDecoration(
                                   border: Border.all(color: Colors.grey),
                                   borderRadius: BorderRadius.circular(50.r), // Use ScreenUtil
@@ -128,7 +125,7 @@ class _MainPageState extends State<MainPage> {
                               SizedBox(width: 10.w),
                               Container(
                                 width: 120.w, // Use ScreenUtil
-                                height: 50.h, // Use ScreenUtil
+                                height: 35.h, // Use ScreenUtil
                                 decoration: BoxDecoration(
                                   border: Border.all(color: Colors.grey),
                                   borderRadius: BorderRadius.circular(50.r), // Use ScreenUtil
@@ -136,8 +133,8 @@ class _MainPageState extends State<MainPage> {
                               ),
                               SizedBox(width: 10.w),
                               Container(
-                                width: 200.w, // Use ScreenUtil
-                                height: 50.h, // Use ScreenUtil
+                                width: 160.w, // Use ScreenUtil
+                                height: 35.h, // Use ScreenUtil
                                 decoration: BoxDecoration(
                                   border: Border.all(color: Colors.grey),
                                   borderRadius: BorderRadius.circular(50.r), // Use ScreenUtil
@@ -147,9 +144,7 @@ class _MainPageState extends State<MainPage> {
                           ),
                         ),
                         SizedBox(height: 16.h), // Use ScreenUtil
-                        Row(
-                          children: [],
-                        )
+                      
                       ],
                     ),
                   ),

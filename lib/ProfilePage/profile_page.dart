@@ -36,10 +36,13 @@ class _ProfilePageState extends State<ProfilePage> {
         padding: EdgeInsets.all(16.w), // Use ScreenUtil padding
         child: Column(
           children: [
-            CircleAvatar(
-              radius: 40.r, // Use ScreenUtil radius
-              backgroundColor: gen,
-              child: Icon(Icons.remove_red_eye_outlined, size: 50.sp, color: bord), // Use ScreenUtil size
+            Container(
+              height: 90.h,
+              width: 90.w,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                color: gen
+              ),
             ),
             SizedBox(height: 10.h), // Use ScreenUtil height
             Text(

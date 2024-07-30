@@ -31,12 +31,13 @@ class Searchpage extends StatelessWidget {
               child: Column(
                 children: [
                   SizedBox(height: 50.h),
-                  CustomTextField(
+                  const CustomTextField(
+                    
                     hintText: 'Search',
                     iconPath: 'Assets/icons/search.svg',  // Provide the correct path to your SVG
                   ),
                   SizedBox(height: 20.h,),
-                 Align(
+              const   Align(
   alignment: Alignment.centerLeft,
   child: Column(
     mainAxisAlignment: MainAxisAlignment.start,

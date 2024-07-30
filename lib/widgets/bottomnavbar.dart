@@ -42,7 +42,7 @@ class CustomBottomAppBar extends StatelessWidget {
                 ),
               ],
             ),
-            height: 70.h,
+            height: 40.h,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
