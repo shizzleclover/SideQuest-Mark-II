@@ -148,47 +148,74 @@ class _MainPageState extends State<MainPage> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         _buildCourseContainer(220.w, 160.h, cont2),
-                        SizedBox(width: 3.w), // Use ScreenUtil
+                        SizedBox(width: 5.w), // Use ScreenUtil
                         _buildCourseContainer(220.w, 160.h, gen),
-                        SizedBox(width: 3.w), // Use ScreenUtil
+                        SizedBox(width: 5.w), // Use ScreenUtil
                         _buildCourseContainer(220.w, 160.h, gen4),
-                        SizedBox(width: 3.w), // Use ScreenUtil
+                        SizedBox(width: 5.w), // Use ScreenUtil
                       ],
                     ),
                   ),
                   SizedBox(height: 10.h), // Use ScreenUtil
+
                   // Final section for 'courses' title and separator
-                  _buildSectionTitle('Activites'),
+                  _buildSectionTitle('Activities'),
+
                   // Scrollable row for final set of course containers
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        _buildCourseContainer(220.w, 160.h, cont2),
-                        SizedBox(width: 3.w), // Use ScreenUtil
-                        _buildCourseContainer(220.w, 160.h, gen),
-                        SizedBox(width: 3.w), // Use ScreenUtil
-                        _buildCourseContainer(220.w, 160.h, gen4),
-                        SizedBox(width: 3.w), // Use ScreenUtil
+                        _buildCourseContainer(330.w, 150.h, cont2),
+                        SizedBox(width: 5.w),
+                        _buildCourseContainer(330.w, 150.h, cont2),
+                        SizedBox(width: 5.w),
+                        _buildCourseContainer(330.w, 150.h, cont2),
                       ],
                     ),
                   ),
+                  SizedBox(height: 10.h), // Use ScreenUtil
+
+                  // Final section for 'Activities' title and separator
+                  _buildSectionTitle('Friends'),
+
+                  // Scrollable row for final set of course containers
+                  SingleChildScrollView(
+                    
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        _buildCourseContainer(180.w, 200.h, cont2),
+                        SizedBox(width: 5.w),
+                       _buildCourseContainer(180.w, 200.h, cont2),
+                        SizedBox(width: 5.w),
+                         _buildCourseContainer(180.w, 200.h, cont2),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 60.h), // Adjust height as needed to ensure content doesn't overlap with bottom app bar
                 ],
               ),
             ),
           ),
-          SizedBox(height: 30.h,),
           // Custom bottom navigation bar
-          CustomBottomAppBar(
-            backgroundColor: bot,
-            onIconTap: _onIconTap,
-            selectedIndex: _selectedIndex,
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: CustomBottomAppBar(
+              backgroundColor: bot,
+              onIconTap: _onIconTap,
+              selectedIndex: _selectedIndex,
+            ),
           ),
         ],
       ),
     );
   }
+
   // Helper method to create category containers
   Widget _buildCategoryContainer(double width, double height) {
     return Container(
@@ -200,6 +227,7 @@ class _MainPageState extends State<MainPage> {
       ),
     );
   }
+
   // Helper method to create course containers
   Widget _buildCourseContainer(double width, double height, Color color) {
     return Container(
@@ -211,6 +239,7 @@ class _MainPageState extends State<MainPage> {
       ),
     );
   }
+
   // Helper method to create section titles and separators
   Widget _buildSectionTitle(String title) {
     return Column(
@@ -224,6 +253,7 @@ class _MainPageState extends State<MainPage> {
             )
           ],
         ),
+        SizedBox(height: 10.h), // Add space below the title
       ],
     );
   }

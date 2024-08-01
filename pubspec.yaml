@@ -38,6 +38,7 @@ flutter:
     - Assets/Icons/down.svg
     - Assets/Icons/share.svg
     - Assets/Icons/dl.svg
+    - Assets/Icons/ios.svg
 
 
   fonts:
