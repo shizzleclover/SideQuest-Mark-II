@@ -96,8 +96,8 @@ class _MainPageState extends State<MainPage> {
                       ),
                       const Spacer(),
                       SvgPicture.asset(
-                        'assets/icons/', // Ensure correct path
-                        height: 50.h, // Use ScreenUtil
+                        'Assets/Icons/bell2.svg', // Ensure correct path
+                        height: 30.h,
                       ),
                     ],
                   ),

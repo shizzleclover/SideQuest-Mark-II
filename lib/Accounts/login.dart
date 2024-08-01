@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sidequest_mark_ii/Accounts/signup.dart';
 import 'package:sidequest_mark_ii/Main%20Screens/main.dart';
 import 'package:sidequest_mark_ii/constants.dart';
- 
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -21,144 +22,152 @@ class _LoginPageState extends State<LoginPage> {
       _isLoading = true;
     });
 
-  Future.delayed(Duration(seconds:2),
-    () {
+    Future.delayed(Duration(seconds: 2), () {
       print("Login Successful");
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => MainPage()),
       );
-      setState( () {
+      setState(() {
         _isLoading = false;
-        });
+      });
     });
-    }
-   
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: blc,
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: 170.h, left: 50.w, right: 50.w),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    'Login to your \naccount',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'play',
-                      fontSize: 30.sp,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 50.w, vertical: 170.h),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                'Login to your \naccount',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'play',
+                  fontSize: 30.sp,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 50.h),
+              Padding(
+                padding: EdgeInsets.only(right: 220.w),
+                child: Text('Email', style: TextStyle(color: Colors.white)),
+              ),
+              Container(
+                width: 340.w, // Use ScreenUtil width
+                child: TextFormField(
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0.r),
+                      borderSide: BorderSide.none,
                     ),
-                    textAlign: TextAlign.center,
+                    contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
                   ),
-                  SizedBox(height: 50.h),
-                  Padding(
-                    padding: EdgeInsets.only(right: 220.w),
-                    child: Text('Email', style: TextStyle(color: Colors.white)),
+                ),
+              ),
+              SizedBox(height: 14.h),
+              Padding(
+                padding: EdgeInsets.only(right: 200.w),
+                child: Text('Password', style: TextStyle(color: Colors.white)),
+              ),
+              Container(
+                width: 340.w, // Use ScreenUtil width
+                child: TextFormField(
+                  controller: _passwordController,
+                  decoration: InputDecoration(
+                    hintText: '*****',
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0.r),
+                      borderSide: BorderSide.none,
+                    ),
+                    contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
                   ),
-                  Container(
-                    width: 340.w, // Use ScreenUtil width
-                    child: TextFormField(
-                      controller: _emailController,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0.r),
-                          borderSide: BorderSide.none,
+                  obscureText: true,
+                ),
+              ),
+              SizedBox(height: 30.h),
+              GestureDetector(
+                onTap: _login,
+                child: Container(
+                  height: 50.h,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: gen,
+                    borderRadius: BorderRadius.circular(5.0.r),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Login',
+                      style: TextStyle(fontSize: 16.sp),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10.h),
+              Container(
+                height: 50.h,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: gen,
+                  borderRadius: BorderRadius.circular(5.0.r),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 20.0), // Adjust padding as needed
+                      child: SvgPicture.asset('Assets/Icons/google.svg'),
+                    ),
+                    Expanded(
+                      child: Center(
+                        child: Text(
+                          'Login with Google',
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                            color: Colors.black, // Adjust the text color as needed
+                          ),
                         ),
-                        contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
                       ),
                     ),
-                  ),
-                  SizedBox(height: 14.h),
-                  Padding(
-                    padding: EdgeInsets.only(right: 200.w),
-                    child: Text('Password', style: TextStyle(color: Colors.white)),
-                  ),
-                  Container(
-                    width: 340.w, // Use ScreenUtil width
-                    child: TextFormField(
-                      controller: _passwordController,
-                      decoration: InputDecoration(
-                        hintText: '*****',
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0.r),
-                          borderSide: BorderSide.none,
-                        ),
-                        contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
-                      ),
-                      obscureText: true,
-                    ),
-                  ),
-                  SizedBox(height: 30.h),
-                  GestureDetector(
-                    onTap:  _login,
-                    child: Column(
-                      children: [
-                        Container(
-                          height: 50.h,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: gen,
-                            borderRadius: BorderRadius.circular(5.0.r),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Login',
-                              style: TextStyle(fontSize: 16.sp),
-                            ),
-                          ),
-                        ),
-                       SizedBox(height: 10),
-Container(
-  height: 50.h,
-  width: double.infinity,
-  decoration: BoxDecoration(
-    color: gen,
-    borderRadius: BorderRadius.circular(5.0.r),
-  ),
-  child: Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      // Icon on the left
-      Padding(
-        padding: EdgeInsets.only(left: 20.0), // Adjust padding as needed
-        child:  SvgPicture.asset('Assets/Icons/google.svg', )
-      ),
-      // Text in the center
-      Expanded(
-        child: Center(
-          child: Text(
-            'Login with Google',
-            style: TextStyle(
-              fontSize: 16.sp,
-              color: Colors.black, // Adjust the text color as needed
-            ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20.h),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Don\'t have an account?', style: TextStyle(color: Colors.white)),
+                    SizedBox(width: 10.w),
+                    GestureDetector(  onTap: () {
+                        Navigator.push(
+                          context,
+                           MaterialPageRoute(builder: (context) => SignupPage()),);
+                    } ,
+                    child:  Text('Register', style: TextStyle(color: Colors.red))),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
       ),
-    ],
-  ),
-),
-
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            
-          ],
-        ),
-      ),
-      
     );
   }
 }

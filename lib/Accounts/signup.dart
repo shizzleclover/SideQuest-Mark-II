@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sidequest_mark_ii/Accounts/login.dart';
 import 'package:sidequest_mark_ii/Main%20Screens/main.dart';
 import 'package:sidequest_mark_ii/constants.dart';
  
@@ -46,7 +47,7 @@ class _SignupPageState extends State<SignupPage> {
             child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: 200.h, left: 50.w, right: 50.w),
+                  padding: EdgeInsets.only(top: 100.h, left: 50.w, right: 50.w),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -59,10 +60,53 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                         textAlign: TextAlign.center,
                       ),
-                      SizedBox(height: 50.h),
+                       SizedBox(height: 50.h),
                       Padding(
                         padding: EdgeInsets.only(right: 220.w),
                         child: Text('Email', style: TextStyle(color: Colors.white)),
+                      ),
+                      Container(
+                        width: 340.w,
+                        child: TextFormField(
+                          controller: _emailController,
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0.r),
+                              borderSide: BorderSide.none,
+                            ),
+                            contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
+                          ),
+                        ),
+                      ),
+
+
+ SizedBox(height: 20.h),
+                      Padding(
+                        padding: EdgeInsets.only(right: 220.w),
+                        child: Text('Name', style: TextStyle(color: Colors.white)),
+                      ),
+                      Container(
+                        width: 340.w,
+                        child: TextFormField(
+                          controller: _emailController,
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0.r),
+                              borderSide: BorderSide.none,
+                            ),
+                            contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
+                          ),
+                        ),
+                      ),
+
+                      SizedBox(height: 20.h),
+                      Padding(
+                        padding: EdgeInsets.only(right: 150.w),
+                        child: Text('Username-Create one', style: TextStyle(color: Colors.white)),
                       ),
                       Container(
                         width: 340.w,
@@ -125,7 +169,14 @@ class _SignupPageState extends State<SignupPage> {
                         Row(
                           children: [
                             Text('Already have an account?', style: TextStyle(color:  Colors.white),),
-                             Text('Login'),
+                            SizedBox(width: 107.w,),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                              },
+                              child:Text('Login', style: TextStyle(color: Colors.red),) ,
+                            ),
+                             
                           ],
                         ),
                       )

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sidequest_mark_ii/Accounts/login.dart';
 import 'package:sidequest_mark_ii/constants.dart';
 import 'package:sidequest_mark_ii/widgets/bottomnavbar.dart';
 
@@ -42,7 +43,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                         icon: SvgPicture.asset('Assets/Icons/arrow.svg'),
                       ),
                       SizedBox(width: 90.w),
-                      Text(
+                      const Text(
                         "My Profile",
                         style: TextStyle(color: Colors.white),
                       ),
@@ -56,6 +57,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                     ],
                   ),
                   SizedBox(height: 20.h),
+                  // Image for the profile page
                   Center(
                     child: Column(
                       children: [
@@ -66,7 +68,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                             border: Border.all(color: gen),
                             borderRadius: BorderRadius.circular(150.0),
                           ),
-                          child: Padding(
+                          child: const Padding(
                             padding: EdgeInsets.all(8.0),
                             child: ClipOval(
                               child: CircleAvatar(
@@ -77,7 +79,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                           ),
                         ),
                         SizedBox(height: 20.h),
-                        Text(
+                        const Text(
                           'John Doe',
                           style: TextStyle(color: Colors.white),
                         ),
@@ -90,10 +92,44 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                       Row(
                         children: [
                           Text('Edit Profile', style: TextStyle(color: Colors.white)),
-                          SizedBox(width: 220.w),
-                          IconButton(
-                            onPressed: () {},
-                            icon: SvgPicture.asset('Assets/Icons/ios.svg'),
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: IconButton(
+                                onPressed: () {},
+                                icon: SvgPicture.asset('Assets/Icons/ios.svg'),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10.h),
+                      Row(
+                        children: [
+                          Text('Support', style: TextStyle(color: Colors.white)),
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: IconButton(
+                                onPressed: () {},
+                                icon: SvgPicture.asset('Assets/Icons/ios.svg'),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10.h),
+                      Row(
+                        children: [
+                          Text('SideQuest +', style: TextStyle(color: Colors.white)),
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: IconButton(
+                                onPressed: () {},
+                                icon: SvgPicture.asset('Assets/Icons/ios.svg'),
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -101,38 +137,33 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                       Row(
                         children: [
                           Text('Edit Profile', style: TextStyle(color: Colors.white)),
-                          SizedBox(width: 220.w),
-                          IconButton(
-                            onPressed: () {},
-                            icon: SvgPicture.asset('Assets/Icons/ios.svg'),
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: IconButton(
+                                onPressed: () {},
+                                icon: SvgPicture.asset('Assets/Icons/ios.svg'),
+                              ),
+                            ),
                           ),
-                        ],
-                      ),
-                      SizedBox(height: 10.h),
-                      Row(
-                        children: [
-                          Text('Edit Profile', style: TextStyle(color: Colors.white)),
-                          SizedBox(width: 220.w),
-                          IconButton(
-                            onPressed: () {},
-                            icon: SvgPicture.asset('Assets/Icons/ios.svg'),
-                          ),
-                        ],
-                      ),
-                     
-                      Row(
-                        children: [
-                          Text('Edit Profile', style: TextStyle(color: Colors.white)),
-                          SizedBox(width: 220.w),
-                          IconButton(
-                            onPressed: () {},
-                            icon: SvgPicture.asset('Assets/Icons/ios.svg'),
-                          ),
-                          SizedBox(height: 140.h,)
                         ],
                       ),
                     ],
                   ),
+                  SizedBox(height: 15.h),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginPage()),
+                      );
+                    },
+                    child: Text(
+                      'Logout',
+                      style: TextStyle(color: bord2, fontSize: 18.sp),
+                    ),
+                  ),
+                  SizedBox(height: 130.h),
                 ],
               ),
             ),

@@ -65,8 +65,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: Column(
                       children: [
                         Container(
-                          height: 300.0,
-                          width: 300.0,
+                          height: 200.0,
+                          width: 200.0,
                           decoration: BoxDecoration(
                             border: Border.all(color: gen),
                             borderRadius: BorderRadius.circular(150.0),
@@ -96,7 +96,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         height: 77,
                         width: 344,
                         decoration: BoxDecoration(
-                          border: Border.all(color: bord2),
+                          border: Border.all(color: Colors.white),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: Padding(
@@ -165,7 +165,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     height: 300.h,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      border: Border.all(color: bord2),
+                      border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(15),
                     ),
                   ),

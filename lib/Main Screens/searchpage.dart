@@ -28,40 +28,57 @@ class Searchpage extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start, // Align text to the left
                 children: [
                   SizedBox(height: 50.h),
-                  const CustomTextField(
+                    CustomTextField(
                     hintText: 'Search', 
-                    iconPath: 'Assets/icons/search.svg',  // Provide the correct path to your SVG
+                    iconPath: 'Assets/Icons/search.svg',  // Provide the correct path to your SVG
                   ),
                   SizedBox(height: 20.h),
-                  const Align(
-                    alignment: Alignment.centerLeft,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text('Popular Searches', style: TextStyle(color: Colors.white)),
-                      ],
-                    ),
+                  Text(
+                    'Popular Searches',
+                    style: TextStyle(color: Colors.white, fontSize: 18.sp),
                   ),
-                  // Additional content here
-                  SizedBox(height: 590.h), // Space before the bottom app bar
+                  SizedBox(height: 10.h),
+                  // Example list of popular searches
+                  _buildPopularSearches(),
+                  SizedBox(height: 60.h), // Space before the bottom app bar
                 ],
               ),
             ),
           ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: CustomBottomAppBar(
-              backgroundColor: bot,
-              onIconTap: _onIconTap,
-              selectedIndex: _selectedIndex,
-            ),
-          ),
         ],
       ),
+      bottomNavigationBar: CustomBottomAppBar(
+        backgroundColor: bot,
+        onIconTap: _onIconTap,
+        selectedIndex: _selectedIndex,
+      ),
+    );
+  }
+
+  Widget _buildPopularSearches() {
+    // Example popular searches
+    final List<String> popularSearches = [
+      'Flutter Development',
+      'Dart Programming',
+      'Mobile App Design',
+      'UI/UX Best Practices',
+      'Tech News',
+    ];
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: popularSearches.map((search) {
+        return Padding(
+          padding: EdgeInsets.symmetric(vertical: 8.h),
+          child: Text(
+            search,
+            style: TextStyle(color: Colors.white, fontSize: 16.sp),
+          ),
+        );
+      }).toList(),
     );
   }
 }
