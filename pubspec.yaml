@@ -12,7 +12,9 @@ dependencies:
   carousel_slider: ^4.2.1
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.0.10+1
+  supabase_flutter: ^2.5.11
   custom_sliding_segmented_control: ^1.8.3
+  shared_preferences: ^2.3.0
 
 dev_dependencies:
   flutter_test:

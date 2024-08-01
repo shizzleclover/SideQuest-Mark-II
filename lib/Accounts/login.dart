@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sidequest_mark_ii/Accounts/signup.dart';
 import 'package:sidequest_mark_ii/Main%20Screens/main.dart';
 import 'package:sidequest_mark_ii/constants.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -15,6 +16,20 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+Future<void> signIn() async{
+try{
+        await Supabase.instance.client.auth.signUp(password: _passwordController.text.trim(), 
+        email: _emailController.text.trim(),
+        
+        );
+        if(!mounted) return;
+        
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainPage()));
+    } on AuthException catch(e){
+      print(e);
+    }
+}
+
   bool _isLoading = false;
 
   void _login() {

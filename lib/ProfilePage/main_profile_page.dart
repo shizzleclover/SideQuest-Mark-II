@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sidequest_mark_ii/ProfilePage/profile_settings.dart';
 import 'package:sidequest_mark_ii/constants.dart';
 import 'package:sidequest_mark_ii/widgets/bottomnavbar.dart';
@@ -13,7 +13,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  int _selectedIndex = 0;
+  int _selectedTabIndex = 0; // Variable to track selected tab
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
     void _onIconTap(int index) {
       setState(() {
-        _selectedIndex = index;
+        _selectedTabIndex = index;
       });
     }
 
@@ -160,15 +160,46 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 10.h),
+                  SizedBox(height: 30.h),
                   Container(
-                    height: 300.h,
+                    height: 50,
                     width: double.infinity,
                     decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: Colors.transparent,
                       border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Stack(
+                      children: [
+                        AnimatedPositioned(
+                          duration: Duration(milliseconds: 300),
+                          left: _selectedTabIndex * (ScreenUtil().setWidth(100) + 20.w),
+                          top: 0,
+                          child: Align(
+                            alignment: Alignment.bottomLeft,
+                            child: Container(
+                              height: 50,
+                              width: 100.w,
+                              decoration: BoxDecoration(
+                                color: gen,
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            _buildTab('Statistics', 0),
+                            _buildTab('Portfolio', 1),
+                            _buildTab('Challenges', 2),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
+                  SizedBox(height: 20.h),
+                  _buildContent(_selectedTabIndex),
                   SizedBox(height: 70.h), // Space to ensure content doesn't overlap with bottom app bar
                 ],
               ),
@@ -181,11 +212,71 @@ class _ProfilePageState extends State<ProfilePage> {
             child: CustomBottomAppBar(
               backgroundColor: bot,
               onIconTap: _onIconTap,
-              selectedIndex: _selectedIndex,
+              selectedIndex: _selectedTabIndex,
             ),
           ),
         ],
       ),
     );
+  }
+
+  Widget _buildTab(String title, int index) {
+    bool isSelected = _selectedTabIndex == index;
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _selectedTabIndex = index;
+        });
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 20.w),
+        child: Center(
+          child: Text(
+            title,
+            style: TextStyle(
+              color: isSelected ? Colors.white : Colors.white70,
+              fontSize: 16.sp,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildContent(int index) {
+    switch (index) {
+      case 0:
+        return Container(
+          height: 300.h,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.white),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Center(child: Text('Statistics Content', style: TextStyle(color: Colors.white))),
+        );
+      case 1:
+        return Container(
+          height: 300.h,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.white),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Center(child: Text('Portfolio Content', style: TextStyle(color: Colors.white))),
+        );
+      case 2:
+        return Container(
+          height: 300.h,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.white),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Center(child: Text('Challenges Content', style: TextStyle(color: Colors.white))),
+        );
+      default:
+        return Container();
+    }
   }
 }
