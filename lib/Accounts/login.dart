@@ -18,7 +18,7 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordController = TextEditingController();
 Future<void> signIn() async{
 try{
-        await Supabase.instance.client.auth.signUp(password: _passwordController.text.trim(), 
+        await Supabase.instance.client.auth.signInWithPassword(password: _passwordController.text.trim(), 
         email: _emailController.text.trim(),
         
         );
@@ -112,7 +112,7 @@ try{
               ),
               SizedBox(height: 30.h),
               GestureDetector(
-                onTap: _login,
+                onTap: signIn,
                 child: Container(
                   height: 50.h,
                   width: double.infinity,
