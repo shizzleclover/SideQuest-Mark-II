@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:sidequest_mark_ii/splashpage.dart';
+import 'package:sidequest_mark_ii/Screens/splashpage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,8 +12,10 @@ void main() async {
       url: 'https://tvijkvllbyjmlwqyqhsp.supabase.co', // Your Supabase URL
       anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR2aWprdmxsYnlqbWx3cXlxaHNwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjI1MjI3NDEsImV4cCI6MjAzODA5ODc0MX0.6McaFGWgjvpPdELAEjyEH6bFrhQyEszNpxGOLxbZHAs', // Your Supabase API Key
     );
+    // ignore: avoid_print
     print("Supabase initialized successfully");
   } catch (e) {
+    // ignore: avoid_print
     print("Error initializing Supabase: $e");
   }
 
@@ -24,10 +26,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(360, 690),
+      designSize: const Size(360, 690),
       builder: (context, child) => MaterialApp(
         theme: ThemeData.light(),
-        home: SplashScreen(), // Ensure SplashScreen is defined
+        home: const SplashScreen(), // Ensure SplashScreen is defined
         debugShowCheckedModeBanner: false,
       ),
     );

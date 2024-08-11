@@ -1,9 +1,11 @@
+// ignore_for_file: avoid_print, unused_field, unused_element
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sidequest_mark_ii/Accounts/signup.dart';
-import 'package:sidequest_mark_ii/Main%20Screens/main.dart';
-import 'package:sidequest_mark_ii/constants.dart';
+import 'package:sidequest_mark_ii/Screens/Accounts/signup.dart';
+import 'package:sidequest_mark_ii/Screens/Main%20Screens/main.dart';
+import 'package:sidequest_mark_ii/utils/constants/colors.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginPage extends StatefulWidget {
@@ -24,7 +26,7 @@ try{
         );
         if(!mounted) return;
         
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainPage()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const MainPage()));
     } on AuthException catch(e){
       print(e);
     }
@@ -37,11 +39,11 @@ try{
       _isLoading = true;
     });
 
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () {
       print("Login Successful");
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => MainPage()),
+        MaterialPageRoute(builder: (context) => const MainPage()),
       );
       setState(() {
         _isLoading = false;
@@ -52,7 +54,7 @@ try{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: blc,
+      backgroundColor: SideQuestColors.blc,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 50.w, vertical: 170.h),
@@ -71,8 +73,9 @@ try{
               SizedBox(height: 50.h),
               Padding(
                 padding: EdgeInsets.only(right: 220.w),
-                child: Text('Email', style: TextStyle(color: Colors.white)),
+                child: const Text('Email', style: TextStyle(color: Colors.white)),
               ),
+              // ignore: sized_box_for_whitespace
               Container(
                 width: 340.w, // Use ScreenUtil width
                 child: TextFormField(
@@ -91,8 +94,9 @@ try{
               SizedBox(height: 14.h),
               Padding(
                 padding: EdgeInsets.only(right: 200.w),
-                child: Text('Password', style: TextStyle(color: Colors.white)),
+                child: const Text('Password', style: TextStyle(color: Colors.white)),
               ),
+              // ignore: sized_box_for_whitespace
               Container(
                 width: 340.w, // Use ScreenUtil width
                 child: TextFormField(
@@ -117,7 +121,7 @@ try{
                   height: 50.h,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: gen,
+                    color: SideQuestColors.gen,
                     borderRadius: BorderRadius.circular(5.0.r),
                   ),
                   child: Center(
@@ -133,14 +137,14 @@ try{
                 height: 50.h,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: gen,
+                  color: SideQuestColors.gen,
                   borderRadius: BorderRadius.circular(5.0.r),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left: 20.0), // Adjust padding as needed
+                      padding: const EdgeInsets.only(left: 20.0), // Adjust padding as needed
                       child: SvgPicture.asset('Assets/Icons/google.svg'),
                     ),
                     Expanded(
@@ -162,20 +166,20 @@ try{
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => LoginPage()),
+                    MaterialPageRoute(builder: (context) => const LoginPage()),
                   );
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Don\'t have an account?', style: TextStyle(color: Colors.white)),
+                    const Text('Don\'t have an account?', style: TextStyle(color: Colors.white)),
                     SizedBox(width: 10.w),
                     GestureDetector(  onTap: () {
                         Navigator.push(
                           context,
-                           MaterialPageRoute(builder: (context) => SignupPage()),);
+                           MaterialPageRoute(builder: (context) => const SignupPage()),);
                     } ,
-                    child:  Text('Register', style: TextStyle(color: Colors.red))),
+                    child:  const Text('Register', style: TextStyle(color: Colors.red))),
                   ],
                 ),
               ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sidequest_mark_ii/Accounts/login.dart';
-import 'package:sidequest_mark_ii/constants.dart';
-import 'package:sidequest_mark_ii/widgets/bottomnavbar.dart';
+import 'package:sidequest_mark_ii/Screens/Accounts/login.dart';
+import 'package:sidequest_mark_ii/utils/constants/colors.dart';
+import 'package:sidequest_mark_ii/utils/widgets/bottomnavbar.dart';
 
 class ProfileSettings extends StatefulWidget {
   const ProfileSettings({super.key});
@@ -24,7 +24,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: back,
+      backgroundColor: SideQuestColors.back,
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -65,7 +65,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                           height: 200.0,
                           width: 200.0,
                           decoration: BoxDecoration(
-                            border: Border.all(color: gen),
+                            border: Border.all(color: SideQuestColors.gen),
                             borderRadius: BorderRadius.circular(150.0),
                           ),
                           child: const Padding(
@@ -91,7 +91,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                     children: [
                       Row(
                         children: [
-                          Text('Edit Profile', style: TextStyle(color: Colors.white)),
+                          const Text('Edit Profile', style: TextStyle(color: Colors.white)),
                           Expanded(
                             child: Align(
                               alignment: Alignment.centerRight,
@@ -106,7 +106,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                       SizedBox(height: 10.h),
                       Row(
                         children: [
-                          Text('Support', style: TextStyle(color: Colors.white)),
+                          const Text('Support', style: TextStyle(color: Colors.white)),
                           Expanded(
                             child: Align(
                               alignment: Alignment.centerRight,
@@ -121,7 +121,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                       SizedBox(height: 10.h),
                       Row(
                         children: [
-                          Text('SideQuest +', style: TextStyle(color: Colors.white)),
+                          const Text('SideQuest +', style: TextStyle(color: Colors.white)),
                           Expanded(
                             child: Align(
                               alignment: Alignment.centerRight,
@@ -136,7 +136,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                       SizedBox(height: 10.h),
                       Row(
                         children: [
-                          Text('Edit Profile', style: TextStyle(color: Colors.white)),
+                          const Text('Edit Profile', style: TextStyle(color: Colors.white)),
                           Expanded(
                             child: Align(
                               alignment: Alignment.centerRight,
@@ -155,12 +155,12 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => LoginPage()),
+                        MaterialPageRoute(builder: (context) => const LoginPage()),
                       );
                     },
                     child: Text(
                       'Logout',
-                      style: TextStyle(color: bord2, fontSize: 18.sp),
+                      style: TextStyle(color: SideQuestColors.bord2, fontSize: 18.sp),
                     ),
                   ),
                   SizedBox(height: 130.h),
@@ -173,7 +173,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
             left: 0,
             right: 0,
             child: CustomBottomAppBar(
-              backgroundColor: bot,
+              backgroundColor: SideQuestColors.bot,
               onIconTap: _onIconTap,
               selectedIndex: _selectedIndex,
             ),

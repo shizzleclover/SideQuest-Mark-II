@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sidequest_mark_ii/constants.dart';
-import 'package:sidequest_mark_ii/widgets/bottomnavbar.dart';
+import 'package:sidequest_mark_ii/utils/constants/colors.dart';
+import 'package:sidequest_mark_ii/utils/widgets/bottomnavbar.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -32,7 +32,7 @@ class _MainPageState extends State<MainPage> {
     }
 
     return Scaffold(
-      backgroundColor: back,
+      backgroundColor: SideQuestColors.back,
 
       // Side drawer configuration
       drawer: Drawer(
@@ -127,11 +127,11 @@ class _MainPageState extends State<MainPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        _buildCourseContainer(220.w, 160.h, cont2),
+                        _buildCourseContainer(220.w, 160.h, SideQuestColors.cont2),
                         SizedBox(width: 5.w), // Use ScreenUtil
-                        _buildCourseContainer(220.w, 160.h, gen4),
+                        _buildCourseContainer(220.w, 160.h, SideQuestColors.gen4),
                         SizedBox(width: 5.w), // Use ScreenUtil
-                        _buildCourseContainer(220.w, 160.h, cont2),
+                        _buildCourseContainer(220.w, 160.h, SideQuestColors.cont2),
                         SizedBox(width: 5.w), // Use ScreenUtil
                       ],
                     ),
@@ -147,11 +147,11 @@ class _MainPageState extends State<MainPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        _buildCourseContainer(220.w, 160.h, cont2),
+                        _buildCourseContainer(220.w, 160.h, SideQuestColors.cont2),
                         SizedBox(width: 5.w), // Use ScreenUtil
-                        _buildCourseContainer(220.w, 160.h, gen),
+                        _buildCourseContainer(220.w, 160.h, SideQuestColors.gen),
                         SizedBox(width: 5.w), // Use ScreenUtil
-                        _buildCourseContainer(220.w, 160.h, gen4),
+                        _buildCourseContainer(220.w, 160.h, SideQuestColors.gen4),
                         SizedBox(width: 5.w), // Use ScreenUtil
                       ],
                     ),
@@ -167,11 +167,11 @@ class _MainPageState extends State<MainPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        _buildCourseContainer(330.w, 150.h, cont2),
+                        _buildCourseContainer(330.w, 150.h, SideQuestColors.cont2),
                         SizedBox(width: 5.w),
-                        _buildCourseContainer(330.w, 150.h, cont2),
+                        _buildCourseContainer(330.w, 150.h, SideQuestColors.cont2),
                         SizedBox(width: 5.w),
-                        _buildCourseContainer(330.w, 150.h, cont2),
+                        _buildCourseContainer(330.w, 150.h, SideQuestColors.cont2),
                       ],
                     ),
                   ),
@@ -187,11 +187,11 @@ class _MainPageState extends State<MainPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        _buildCourseContainer(180.w, 200.h, cont2),
+                        _buildCourseContainer(180.w, 200.h, SideQuestColors.cont2),
                         SizedBox(width: 5.w),
-                       _buildCourseContainer(180.w, 200.h, cont2),
+                       _buildCourseContainer(180.w, 200.h, SideQuestColors.cont2),
                         SizedBox(width: 5.w),
-                         _buildCourseContainer(180.w, 200.h, cont2),
+                         _buildCourseContainer(180.w, 200.h, SideQuestColors.cont2),
                       ],
                     ),
                   ),
@@ -206,7 +206,7 @@ class _MainPageState extends State<MainPage> {
             left: 0,
             right: 0,
             child: CustomBottomAppBar(
-              backgroundColor: bot,
+              backgroundColor: SideQuestColors.bot,
               onIconTap: _onIconTap,
               selectedIndex: _selectedIndex,
             ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sidequest_mark_ii/ProfilePage/profile_settings.dart';
-import 'package:sidequest_mark_ii/constants.dart';
-import 'package:sidequest_mark_ii/widgets/bottomnavbar.dart';
+import 'package:sidequest_mark_ii/Screens/ProfilePage/profile_settings.dart';
+import 'package:sidequest_mark_ii/utils/constants/colors.dart';
+import 'package:sidequest_mark_ii/utils/widgets/bottomnavbar.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -26,7 +26,7 @@ class _ProfilePageState extends State<ProfilePage> {
     }
 
     return Scaffold(
-      backgroundColor: back,
+      backgroundColor: SideQuestColors.back,
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -41,13 +41,13 @@ class _ProfilePageState extends State<ProfilePage> {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => ProfileSettings()),
+                            MaterialPageRoute(builder: (context) => const ProfileSettings()),
                           );
                         },
                         icon: SvgPicture.asset('Assets/Icons/gear.svg'),
                       ),
                       SizedBox(width: 90.w),
-                      Text(
+                const      Text(
                         "My Profile",
                         style: TextStyle(color: Colors.white),
                       ),
@@ -68,10 +68,10 @@ class _ProfilePageState extends State<ProfilePage> {
                           height: 200.0,
                           width: 200.0,
                           decoration: BoxDecoration(
-                            border: Border.all(color: gen),
+                            border: Border.all(color: SideQuestColors.gen),
                             borderRadius: BorderRadius.circular(150.0),
                           ),
-                          child: Padding(
+                          child: const Padding(
                             padding: EdgeInsets.all(8.0),
                             child: ClipOval(
                               child: CircleAvatar(
@@ -82,7 +82,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                         ),
                         SizedBox(height: 20.h),
-                        Text(
+                        const Text(
                           'John Doe',
                           style: TextStyle(color: Colors.white),
                         ),
@@ -100,14 +100,14 @@ class _ProfilePageState extends State<ProfilePage> {
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                          padding:const  EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                           child: Row(
                             children: [
                               Container(
                                 height: 57,
                                 width: 53.6,
                                 decoration: BoxDecoration(
-                                  color: gen,
+                                  color: SideQuestColors.gen,
                                   borderRadius: BorderRadius.circular(5),
                                 ),
                                 child: Center(
@@ -119,18 +119,18 @@ class _ProfilePageState extends State<ProfilePage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text(
+                                const  Text(
                                     "CV_The_Clovers",
                                     style: TextStyle(color: Colors.white),
                                   ),
                                   SizedBox(height: 10.h),
-                                  Text(
+                              const    Text(
                                     "Views 39",
                                     style: TextStyle(color: Colors.white),
                                   ),
                                 ],
                               ),
-                              Spacer(),
+                            const  Spacer(),
                               Container(
                                 height: 57,
                                 width: 53.6,
@@ -172,7 +172,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: Stack(
                       children: [
                         AnimatedPositioned(
-                          duration: Duration(milliseconds: 300),
+                          duration: const Duration(milliseconds: 300),
                           left: _selectedTabIndex * (ScreenUtil().setWidth(100) + 20.w),
                           top: 0,
                           child: Align(
@@ -181,7 +181,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               height: 50,
                               width: 100.w,
                               decoration: BoxDecoration(
-                                color: gen,
+                                color:SideQuestColors.gen,
                                 borderRadius: BorderRadius.circular(50),
                               ),
                             ),
@@ -210,7 +210,7 @@ class _ProfilePageState extends State<ProfilePage> {
             left: 0,
             right: 0,
             child: CustomBottomAppBar(
-              backgroundColor: bot,
+              backgroundColor: SideQuestColors.bot,
               onIconTap: _onIconTap,
               selectedIndex: _selectedTabIndex,
             ),
@@ -253,7 +253,7 @@ class _ProfilePageState extends State<ProfilePage> {
             border: Border.all(color: Colors.white),
             borderRadius: BorderRadius.circular(15),
           ),
-          child: Center(child: Text('Statistics Content', style: TextStyle(color: Colors.white))),
+          child: const Center(child: Text('Statistics Content', style: TextStyle(color: Colors.white))),
         );
       case 1:
         return Container(
@@ -263,7 +263,7 @@ class _ProfilePageState extends State<ProfilePage> {
             border: Border.all(color: Colors.white),
             borderRadius: BorderRadius.circular(15),
           ),
-          child: Center(child: Text('Portfolio Content', style: TextStyle(color: Colors.white))),
+          child: const Center(child: Text('Portfolio Content', style: TextStyle(color: Colors.white))),
         );
       case 2:
         return Container(
@@ -273,7 +273,7 @@ class _ProfilePageState extends State<ProfilePage> {
             border: Border.all(color: Colors.white),
             borderRadius: BorderRadius.circular(15),
           ),
-          child: Center(child: Text('Challenges Content', style: TextStyle(color: Colors.white))),
+          child: const Center(child: Text('Challenges Content', style: TextStyle(color: Colors.white))),
         );
       default:
         return Container();

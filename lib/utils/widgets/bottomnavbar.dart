@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sidequest_mark_ii/Main%20Screens/main.dart';
-import 'package:sidequest_mark_ii/Main%20Screens/searchpage.dart';
-import 'package:sidequest_mark_ii/ProfilePage/main_profile_page.dart';
-import 'package:sidequest_mark_ii/tasks/calender.dart';
-import 'package:sidequest_mark_ii/tasks/news.dart';
+import 'package:sidequest_mark_ii/Screens/Main%20Screens/main.dart';
+import 'package:sidequest_mark_ii/Screens/Main%20Screens/searchpage.dart';
+import 'package:sidequest_mark_ii/Screens/ProfilePage/main_profile_page.dart';
+import 'package:sidequest_mark_ii/Screens/tasks/calender.dart';
+import 'package:sidequest_mark_ii/Screens/tasks/news.dart';
 
 class CustomBottomAppBar extends StatelessWidget {
   final Color backgroundColor;

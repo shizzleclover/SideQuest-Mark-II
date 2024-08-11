@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sidequest_mark_ii/Accounts/login.dart';
-import 'package:sidequest_mark_ii/Accounts/signup.dart';
-import 'package:sidequest_mark_ii/constants.dart';
+import 'package:sidequest_mark_ii/Screens/Accounts/login.dart';
+import 'package:sidequest_mark_ii/Screens/Accounts/signup.dart';
+import 'package:sidequest_mark_ii/utils/constants/colors.dart';
  
 class OnBoard1 extends StatefulWidget {
   const OnBoard1({super.key});
@@ -18,30 +18,30 @@ class _OnBoard1State extends State<OnBoard1> {
   int _currentIndex = 0;
 
   final List<Color> pageColors = [
-    gen2,
-    gen3,
-    gen4,
-    gen5,
+    SideQuestColors.gen2,
+  SideQuestColors.gen3,
+    SideQuestColors.gen4,
+    SideQuestColors.gen5,
   ];
 
   final List<Widget> onboardingPages = [
     _buildOnboardingPage(
-      color: gen2,
+      color: SideQuestColors.gen2,
       imagePath: 'Assets/Images/purp.png',
       title: 'Welcome To\n SideQuest',
     ),
     _buildOnboardingPage(
-      color: gen3,
+      color: SideQuestColors.gen3,
       imagePath: 'Assets/Images/lad.png',
       title: 'Get Support In\n Your new\n Niche',
     ),
     _buildOnboardingPage(
-      color: gen4,
+      color: SideQuestColors.gen4,
       imagePath: 'Assets/Images/pr.png',
       title: 'Explore More Features',
     ),
     _buildOnboardingPage(
-      color: gen5,
+      color: SideQuestColors.gen5,
       imagePath: 'Assets/Images/tr.png',
       title: 'Join Us Today!',
     ),
@@ -164,7 +164,7 @@ class _OnBoard1State extends State<OnBoard1> {
         height: 50.h,
         width: 180.w,
         decoration: BoxDecoration(
-          border: Border.all(color: bord, width: 1.5.w),
+          border: Border.all(color: SideQuestColors.bord, width: 1.5.w),
           borderRadius: BorderRadius.circular(5.0.r),
         ),
         child: Center(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sidequest_mark_ii/constants.dart';
-import 'package:sidequest_mark_ii/widgets/SearchBox.dart';
-import 'package:sidequest_mark_ii/widgets/bottomnavbar.dart';
+import 'package:sidequest_mark_ii/utils/constants/colors.dart';
+import 'package:sidequest_mark_ii/utils/widgets/SearchBox.dart';
+import 'package:sidequest_mark_ii/utils/widgets/bottomnavbar.dart';
 
 class Searchpage extends StatelessWidget {
   const Searchpage({super.key});
@@ -15,13 +15,14 @@ class Searchpage extends StatelessWidget {
     ScreenUtil.init(context);
 
     // Function to handle icon tap and navigation
+    // ignore: no_leading_underscores_for_local_identifiers
     void _onIconTap(int index) {
       // Handle icon tap and navigation
       _selectedIndex = index;
     }
 
     return Scaffold(
-      backgroundColor: back,
+      backgroundColor: SideQuestColors.back,
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -31,7 +32,7 @@ class Searchpage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start, // Align text to the left
                 children: [
                   SizedBox(height: 50.h),
-                    CustomTextField(
+                    const CustomTextField(
                     hintText: 'Search', 
                     iconPath: 'Assets/Icons/search.svg',  // Provide the correct path to your SVG
                   ),
@@ -51,7 +52,7 @@ class Searchpage extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: CustomBottomAppBar(
-        backgroundColor: bot,
+        backgroundColor: SideQuestColors.bot,
         onIconTap: _onIconTap,
         selectedIndex: _selectedIndex,
       ),

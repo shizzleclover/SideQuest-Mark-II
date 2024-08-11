@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sidequest_mark_ii/constants.dart';
+import 'package:sidequest_mark_ii/utils/constants/colors.dart';
 
 class NewsPage extends StatefulWidget {
   const NewsPage({super.key});
@@ -12,7 +12,7 @@ class _NewsPageState extends State<NewsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: blc,
+      backgroundColor: SideQuestColors.blc ,
     );
   }
 }
